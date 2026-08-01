@@ -1,0 +1,3 @@
+# Convenience specification including optional PLY rendering.
+# For hash-locked reproduction, pass --visualization to the environment script.
+-r requirements/requirements-visualization.in

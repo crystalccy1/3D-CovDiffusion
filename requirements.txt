@@ -1,0 +1,3 @@
+# Convenience specification for the validated Linux/CUDA 11.7 runtime.
+# For hash-locked reproduction, use scripts/create_locked_environment.sh.
+-r requirements/requirements-runtime.in

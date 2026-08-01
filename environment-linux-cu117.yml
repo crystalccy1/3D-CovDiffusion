@@ -1,0 +1,6 @@
+name: 3dcov-cu117
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10.18
+  - pip

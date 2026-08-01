@@ -1,0 +1,4 @@
+---
+# Fixed Shelves training/evaluation profile.
+dataset: shelves-v2
+batch_size: 512

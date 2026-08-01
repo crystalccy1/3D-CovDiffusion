@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: If you use this software, please cite the 3D-CovDiffusion paper accepted at IROS 2026.
+title: 3D-CovDiffusion
+type: software
+authors:
+  - family-names: Chen
+    given-names: Chenyuan
+  - family-names: Ding
+    given-names: Haoran
+  - family-names: Ding
+    given-names: Ran
+  - family-names: Liu
+    given-names: Tianyu
+  - family-names: He
+    given-names: Zewen
+  - family-names: Duan
+    given-names: Anqing
+  - family-names: Nakamura
+    given-names: Yoshihiko
+repository-code: https://github.com/crystalccy1/3D-CovDiffusion
+url: https://crystalccy1.github.io/3D-CovDiffusion/

@@ -1,0 +1,2 @@
+-r requirements-runtime.in
+open3d==0.19.0

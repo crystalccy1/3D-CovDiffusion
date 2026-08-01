@@ -1,0 +1,4 @@
+---
+# Fixed Containers training/evaluation profile.
+dataset: containers-v2
+batch_size: 128

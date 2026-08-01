@@ -1,0 +1,11 @@
+torch @ https://download.pytorch.org/whl/cu117/torch-1.13.1%2Bcu117-cp310-cp310-linux_x86_64.whl
+diffusers==0.35.1
+einops==0.8.2
+omegaconf==2.3.0
+dill==0.4.0
+safetensors==0.7.0
+huggingface-hub==0.36.1
+numpy==1.26.4
+zarr==2.18.3
+numcodecs==0.13.1
+tqdm==4.67.1

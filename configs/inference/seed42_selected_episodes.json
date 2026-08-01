@@ -1,0 +1,228 @@
+{
+  "format_version": "3dcov-selected-inference-v1",
+  "model_repository": "ChenyuanC/3D-CovDiffusion",
+  "model_revision": "a2d93ff2dfef9217882904a2d6ef7260a23f91b7",
+  "evaluation_code": {
+    "repository": "https://github.com/crystalccy1/3D-CovDiffusion",
+    "critical_files": {
+      "configs/covdiffusion/containers.yaml": "0e05e8c608193a9e88b0c4e407ce3bcb89688e7d6233433e5f9e3320877cc071",
+      "configs/covdiffusion/covdiffusion.yaml": "494af0e8004d9a1c99b266d50ead0a12f680c084837b5968e676b9901f2f4a35",
+      "configs/covdiffusion/cuboids.yaml": "02d5a668f6e7a8f288edf51767ad5efb0c16b8b9f6623aa14c3001d647f5cc9b",
+      "configs/covdiffusion/default.yaml": "07ece1744fd6dbf2c9d52151bab5079b07aed3db8d587dc229f19716daf82db6",
+      "configs/covdiffusion/shelves.yaml": "c1d43223cf21ad6622c34eaada8a42df0e11e78cccf88f74d9beac15a0ef5e26",
+      "configs/covdiffusion/windows.yaml": "4745fa38e56d1a7fcf285a2336e2d262fa675ae9dba57ea56a87162aada3bb6e",
+      "covdiffusion/__init__.py": "471ae0709861cf247c1eca23920e4e39bcb0003ab25525a85649861c90cad996",
+      "covdiffusion/common/__init__.py": "19c1e8a3eadb811bec58f8b0a65af73ab48958ff85576c7e85da126dce6cbdeb",
+      "covdiffusion/common/model_util.py": "7f9df17ac35007bc2862cb9242e9d4b86171fb73db90b1ebdfff6cd58a153734",
+      "covdiffusion/common/pytorch_util.py": "cc2c07452e623675afcc2fe8db7d6467717281339c00b96754a1daf370fb6e21",
+      "covdiffusion/env_runner/__init__.py": "1c9eca8618243d4e6176f8c7b6c55fcb27c1ded78ae983b31bf8f9936d117973",
+      "covdiffusion/env_runner/base_runner.py": "fb9418c7d0a422335d434513bdb03aa59422c3eab058392e160bb866dfd559f9",
+      "covdiffusion/env_runner/covdiffusion_runner.py": "8658d86c5ddf4012a1a0d39612f396922e3f4deb0708952dcca116ad53797ee6",
+      "covdiffusion/evaluation/__init__.py": "14a92b6b64aa2a3ac16877e640354ae473396af08c688bbce6ac96382ff0c4d1",
+      "covdiffusion/evaluation/metric_suite.py": "285d7ddebf49c608b365c0d853914997503982fc1f85326d37b606ba0a4ca567",
+      "covdiffusion/evaluation/paper_metrics.py": "911ebc5cb987c29928d7b52857cb6dd4ae143484ce3739cc580c34b9ed428032",
+      "covdiffusion/model/__init__.py": "b90d9d1b06f130c1a801c7bdef2b52ff3e3cd1ce55da55d5f3119441bb48399a",
+      "covdiffusion/model/common/__init__.py": "240dfff377c0a2c7d9c305e42ac01eb78d899994cea3c530e39d9553d13ccd61",
+      "covdiffusion/model/common/dict_of_tensor_mixin.py": "c90b5f25405875789e6c89aded955389cd20d4d00d4d1e2904d0d8196b6fc1e4",
+      "covdiffusion/model/common/module_attr_mixin.py": "a9c1fafcd1ab8ce8ac77ff9889451a8d458a7d7d0039d64326c5c18205c62da1",
+      "covdiffusion/model/common/normalizer.py": "a94e8cfac6be1b80300fead8cdedabd1af13cfbaa52610b512785a8a31226aee",
+      "covdiffusion/model/diffusion/__init__.py": "555964ed113f7c401343fe486821d09d55c18e90f791821e50b2e6d54c50db46",
+      "covdiffusion/model/diffusion/conditional_unet1d.py": "7a54cf7cd39422150ef323984640179f175e54ca73d3f0515ff413b468e4eb51",
+      "covdiffusion/model/diffusion/conv1d_components.py": "6be894caa5eae81dab63da541c2f0f3a549170939e95af592b8846aaba94c1d4",
+      "covdiffusion/model/diffusion/mask_generator.py": "49c6518f7025c36db76e069c3e7e0dd06295d8e23aabb6ebb659c02b8cf6e72b",
+      "covdiffusion/model/diffusion/positional_embedding.py": "2266c75ecc9c9ac8ca126839d39a7bafbdd7af8800d6de903f66815e64cc366c",
+      "covdiffusion/model/vision/__init__.py": "4da6dee4e27a2e6ebc0c54eab338e236bedf3491edac6147f14c957c5eee258c",
+      "covdiffusion/model/vision/pointnet_extractor.py": "2c35b633c0c5476b89550b450843dfa4046f9482c43d6988dc27f86c9ea09aa1",
+      "covdiffusion/policy/__init__.py": "a14502efda39d31230ad6635213229b400883c35ef07af87bc580abcbde9c5c4",
+      "covdiffusion/policy/base_policy.py": "dc0a7ae78dc305d52f2d81188e04b995b760271abd0e99678826d00732075f7f",
+      "covdiffusion/policy/dp3.py": "4d2310680bd6bc7521c688461cfbc7088008c50cc532f09c2de8dd305b327882",
+      "evaluate.py": "bb6d2adee5c69cf5817a81431245145eac388ade0910e3b279298efd3a045e11",
+      "models/__init__.py": "fbfa254718fb0c85712f5c0eea51201b4ad936d6c22ca9b6a9b93e3ff817bcf5",
+      "reproduce.py": "5665c8d3cbbba0172c1b79dc6824b522b0b389c6c802875c81d50b09e7c1e593",
+      "scripts/verify_selected_inference.py": "91336f09c02f0181465a13e6ca7c4d5732a92950e8d7c37310cd051f6a786820",
+      "utils/__init__.py": "d463501e2a88dd7952e7e018ed4d9a6089f903b89a9502a96387d3ce5ba52341",
+      "utils/dataset/__init__.py": "e28453c67e22ae8030446e00fbfa41a49477b5c009be8096e5f1c78460b5bbbe",
+      "utils/dataset/canonical_evaluation_dataset.py": "077dbb0ae2b27cd4e63641dcb66d50f7e16868f3c696fddbc3a27f599bce1ed5",
+      "utils/dataset/covdiffusion_rollout_dataset.py": "69c46fa0f621661cdc310f415a0922f2123a4d1cc4b5235ededba8da58b9d485"
+    },
+    "sha256": "a8726097cb704ef7d1426a8c88cabbd90bc8a8a539a924389646ad47fc802dc9"
+  },
+    "validated_environment": {
+        "python": "3.10.18",
+    "pytorch": "1.13.1+cu117",
+    "cuda_runtime": "11.7",
+    "cudnn": "8.5.0",
+        "gpu": "NVIDIA GeForce RTX 4090",
+        "driver": "580.159.03",
+        "diffusers": "0.35.1",
+        "numpy": "1.26.4",
+        "omegaconf": "2.3.0",
+        "safetensors": "0.7.0",
+        "open3d": "0.19.0"
+  },
+  "evaluation_data_source": {
+    "canonical_cache_repository": "ChenyuanC/3D-CovDiffusion-Train-Ready",
+    "canonical_cache_revision": "38bf84c4c8a34bc497167b21b2b68182e0099dc8"
+  },
+  "protocol": {
+    "weight_variant": "raw",
+    "dataset_split": "test",
+    "condition_mode_sequence": [
+      "GT_Cond",
+      "Pred_Cond"
+    ],
+    "reported_condition_mode": "Pred_Cond",
+    "rng_note": "The locked replay seeds once, evaluates GT_Cond first, and then evaluates Pred_Cond without resetting the global RNG. This fixed order preserves selected-visualization output.",
+    "selected_episodes_per_category": 1,
+    "ddim_inference_steps": 10,
+    "prediction_type": "sample",
+    "horizon": 16,
+    "action_token": "four ordered 6-DoF poses (24 values)",
+    "initial_history": "first 24-D action token of the evaluation trajectory",
+    "history_update": "last predicted action token from each generated chunk",
+    "coverage_mode": "face-count",
+    "spray_radius": 0.1
+  },
+  "categories": {
+    "windows": {
+      "dataset": "windows-v2",
+      "test_split_size": 200,
+      "test_split_sha256": "6c20c07034eb6bf799b99b2b9d0ff337ef5ceeb308c5281ba59697f46ee25c03",
+      "test_split_index": 5,
+      "sample_id": "810_wr1fr_1",
+      "evaluation_ready_sha256": "b24bccc3d86b5c22a997c8e543174b2bf6674ff7a618c4aa440f87c2c9567f1c",
+      "training_seed": 42,
+      "rollout_seed": 42,
+      "source_checkpoint": {
+        "run_id": "TML4Q-S42",
+        "epoch": 165,
+        "global_step": 48472,
+        "basename": "epoch=165-step=48472-pred_cond_Pred_Cond_mean_point-wise_chamfer_distance=10p4109.ckpt",
+        "sha256": "bcb0db0b7a5f0c2a4c7bf0472785b5588c4288d627ec212379a37c40b64f14e3",
+        "selection_pcd": 10.410878,
+        "loaded_state": "state_dicts.model"
+      },
+      "public_checkpoint": {
+        "path": "raw/windows/model.safetensors",
+        "model_sha256": "a0c381fbffbe2e12c83a1a40bc8a2591717f12579561a21e146ce4b1b18156ae",
+        "config_path": "raw/windows/config.yaml",
+        "config_sha256": "f438f51db30e0dbc91eef89723cc9a36820e46fd29244d1d4d6711187f0eff5d",
+        "metrics_path": "raw/windows/metrics.json",
+        "metrics_sha256": "449fb2f2eb63bfd61d1524962ebb3288e8576e0be1463178c7e515a9a244f119"
+      },
+      "public_metric_reference": {
+        "pcd": 8.000224852284074,
+        "jerk": 0.027546906054608765,
+        "coverage": 100.0
+      },
+      "public_render_reference": {
+        "prediction_ply_sha256": "69d3671c2f4bc1d2b2dbe25ca194922ef75ab89fbeafc9994900e275c6951e26"
+      }
+    },
+    "cuboids": {
+      "dataset": "cuboids-v2",
+      "test_split_size": 200,
+      "test_split_sha256": "2db3fb98d05d2b52a3b83eeeda18c0163a2ae8db41d5a5d5eed50bc80bd25a36",
+      "test_split_index": 3,
+      "sample_id": "669_cube_1001_1285_1263",
+      "evaluation_ready_sha256": "ed03ed605a0a0bb11b92fd658a0c01fdbfdf1808b5a4804999f305d41e07ef8f",
+      "training_seed": 42,
+      "rollout_seed": 42,
+      "source_checkpoint": {
+        "run_id": "X1PD1-S42",
+        "epoch": 40,
+        "global_step": 38007,
+        "basename": "epoch=40-step=38007-pred_cond_Pred_Cond_mean_point-wise_chamfer_distance=6p6123.ckpt",
+        "sha256": "9758331dda8cbc0b1f13365b6c0e4e105dd2436ed7d254884bdc5da00ae11dee",
+        "selection_pcd": 6.612324,
+        "loaded_state": "state_dicts.model"
+      },
+      "public_checkpoint": {
+        "path": "raw/cuboids/model.safetensors",
+        "model_sha256": "0fc51c588b79e6952758535d5b4b5ca8baed7b08ca76b185ef9776e768ce9110",
+        "config_path": "raw/cuboids/config.yaml",
+        "config_sha256": "fd34ec223d2133779c75d30b7280af6e1e469d3c35bd72995f768415dbf6bbd3",
+        "metrics_path": "raw/cuboids/metrics.json",
+        "metrics_sha256": "4ec352f3ae9d52e73d6e06be73ab71eec55e441331ca5de784c7a76a42b5af5b"
+      },
+      "public_metric_reference": {
+        "pcd": 36.72168387042351,
+        "jerk": 0.0361937345775112,
+        "coverage": 100.0
+      },
+      "public_render_reference": {
+        "prediction_ply_sha256": "5fe65bf5f7acf889b5fb3fec0949533180741964d8d8c30dd0f77a99d2987c1c"
+      }
+    },
+    "shelves": {
+      "dataset": "shelves-v2",
+      "test_split_size": 200,
+      "test_split_sha256": "8d6cb52bad7b491d397875d371ea1add2d450905fe8881d6f3f22fd0eaeb53a1",
+      "test_split_index": 4,
+      "sample_id": "box_h620_w500_d220.0_sh1.0_sv2.0",
+      "evaluation_ready_sha256": "da4647601ec62888cee9926f97b435f60a85f50a8104ff72a2d49e0d49dbfc12",
+      "training_seed": 42,
+      "rollout_seed": 42,
+      "source_checkpoint": {
+        "run_id": "52VCU-S42",
+        "epoch": 45,
+        "global_step": 40204,
+        "basename": "epoch=45-step=40204-pred_cond_Pred_Cond_mean_point-wise_chamfer_distance=10p0690.ckpt",
+        "sha256": "7a68066d135ab835314779a789305547ecf18de355113b21f917171e4b8358fb",
+        "selection_pcd": 10.069027,
+        "loaded_state": "state_dicts.model"
+      },
+      "public_checkpoint": {
+        "path": "raw/shelves/model.safetensors",
+        "model_sha256": "2051bd6fc6e2bc297f54f5ef97f9dd7d3f0515fa595aab78cd61d5a15d169380",
+        "config_path": "raw/shelves/config.yaml",
+        "config_sha256": "814000c0e59f859343a35cfccd33de218799c5c1d87f285c0c5bc5f65972861f",
+        "metrics_path": "raw/shelves/metrics.json",
+        "metrics_sha256": "07144bb25cc4061c1878a2a4eee1180ec80de7273e0dd5571c5c7ab8d70dd99c"
+      },
+      "public_metric_reference": {
+        "pcd": 15.32787429147244,
+        "jerk": 0.057128050316467845,
+        "coverage": 99.99968475738929
+      },
+      "public_render_reference": {
+        "prediction_ply_sha256": "c6f8b1b748b401be2f9eee850330986a96f236b1f943062198268cef87e669b9"
+      }
+    },
+    "containers": {
+      "dataset": "containers-v2",
+      "test_split_size": 18,
+      "test_split_sha256": "37b2817269f150ccd63af9e694c3c89dfd5729f8aa8cf79852e6e75687c0268e",
+      "test_split_index": 1,
+      "sample_id": "spoegcr3gv",
+      "evaluation_ready_sha256": "56f3ee6128d1f12200fceb5db8a57160df78be6672aa76402e18ea11a10845a5",
+      "training_seed": 42,
+      "rollout_seed": 42,
+      "source_checkpoint": {
+        "run_id": "ODAV4-S42",
+        "epoch": 500,
+        "global_step": 141783,
+        "basename": "epoch=500-step=141783-pred_cond_Pred_Cond_mean_point-wise_chamfer_distance=347p9326.ckpt",
+        "sha256": "7c66fbf944afa0182e2863b5a163beb09a5696c29333143cf8f25594c5ffbfb8",
+        "selection_pcd": 347.93262,
+        "loaded_state": "state_dicts.model"
+      },
+      "public_checkpoint": {
+        "path": "raw/containers/model.safetensors",
+        "model_sha256": "2d95ed639db8789456fd6b4bfb203a66d2f97ffac06c6ac4f616967bb6675d78",
+        "config_path": "raw/containers/config.yaml",
+        "config_sha256": "b379357ea61882e4e0f47e3ba7f2c6a06e46d2b4f5141d867af3b99fa60f43c8",
+        "metrics_path": "raw/containers/metrics.json",
+        "metrics_sha256": "9346ac77e468dcbfeccdf544ec2375be8c0b8d499ad23fab19a6c3606cb7915d"
+      },
+      "public_metric_reference": {
+        "pcd": 45.635358067344924,
+        "jerk": 0.02282969805423251,
+        "coverage": 99.08239120334521
+      },
+      "public_render_reference": {
+        "prediction_ply_sha256": "27fb76dfac868040ca726787c81070c934b290034df0b3873882afc656622475"
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+# OS, credentials, and local environment
+.DS_Store
+*.pem
+*.key
+*.priv
+*.der
+.env*
+
+# Generated dependency/build directories (not part of the research release)
+/node_modules/
+/dist/
+/site/
+/.next/
+/.vinext/
+/.wrangler/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Research data, checkpoints, and generated outputs
+/data/
+/runs/
+/demo/
+/wandb/
+/paper_vis/
+/checkpoints/
+/artifacts/
+/outputs/
+/work/
+/paper_results/
+*.zarr/
+*.ckpt
+*.pth
+*.pt
+*.safetensors
+*.onnx
+*.pkl
+*.pickle
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.log
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.7z

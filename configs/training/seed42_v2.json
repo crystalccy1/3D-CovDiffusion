@@ -1,0 +1,119 @@
+{
+  "format_version": "3dcov-training-profile-v1",
+  "description": "Fixed seed-42 training profile for the four released category models.",
+  "entrypoint": "reproduce.py train",
+  "dataset_release": {
+    "repository": "ChenyuanC/3D-CovDiffusion-Train-Ready",
+    "revision": "38bf84c4c8a34bc497167b21b2b68182e0099dc8"
+  },
+  "release_protocol": {
+    "config_precedence_low_to_high": ["default", "model", "category", "cli"],
+    "status": "The release profiles fix the model, category, seed, batch size, optimizer, and training duration used by the reproduction commands."
+  },
+  "common": {
+    "seed": 42,
+    "epochs": 4800,
+    "workers": 0,
+    "overfit": false,
+    "optimizer": {
+      "name": "Adam",
+      "learning_rate": 0.0001
+    },
+    "model": {
+      "backbone": "dp3",
+      "action_dim": 24,
+      "horizon": 16,
+      "n_action_steps": 100,
+      "n_obs_steps": 1,
+      "configured_encoder_output_dim": 256,
+      "effective_encoder_output_dim": 128
+    },
+    "diffusion": {
+      "diffusion_step_embed_dim": 128,
+      "down_dims": [512, 1024, 2048],
+      "kernel_size": 5,
+      "n_groups": 8,
+      "condition_type": "film",
+      "use_down_condition": true,
+      "use_mid_condition": true,
+      "use_up_condition": true,
+      "num_inference_steps": 10,
+      "obs_as_global_cond": true
+    },
+    "noise_scheduler": {
+      "name": "DDIMScheduler",
+      "num_train_timesteps": 100,
+      "beta_start": 0.0001,
+      "beta_end": 0.02,
+      "beta_schedule": "squaredcos_cap_v2",
+      "clip_sample": true,
+      "set_alpha_to_one": true,
+      "steps_offset": 0,
+      "prediction_type": "sample"
+    },
+    "data": {
+      "point_cloud_shape": [5120, 3],
+      "action_dim": 24,
+      "schema_version": "3dcov-train-v1",
+      "train_ready_equivalence": {
+        "episode_ends_action_stroke_ids": "exact for all four categories",
+        "point_cloud": "one validated static observation per episode",
+        "normalizer_scale_offset": "exact"
+      }
+    },
+    "checkpoint_selection": {
+      "uses_ema_policy_for_rollout": true,
+      "interval_epochs": 5,
+      "condition_mode_sequence": ["GT_Cond", "Pred_Cond"],
+      "metric": "pred_cond_Pred_Cond_mean_historical_pose_chamfer_distance",
+      "metric_protocol": "Symmetric squared-distance Chamfer over weighted 6-D poses (XYZ plus 0.25-scaled orientation vector). Final paper evaluation PCD remains XYZ-only.",
+      "mode": "min"
+    }
+  },
+  "categories": {
+    "windows": {
+      "dataset": "windows-v2",
+      "train_split_sha256": "ab967f9f1897ef9c736836197a98024cda6517fbd56bb8b2e0366499ba7cbfb9",
+      "config_stack": ["covdiffusion", "windows"],
+      "batch_size": 512,
+      "train_sequences": 149436,
+      "batches_per_epoch": 292,
+      "selected_checkpoint_epoch_zero_based": 165,
+      "selected_checkpoint_global_step": 48472,
+      "selected_checkpoint_pose_chamfer": 10.410878
+    },
+    "cuboids": {
+      "dataset": "cuboids-v2",
+      "train_split_sha256": "14ca6498ebc9a95af0d560f12010a7be7980612b285ddab00e74b340f0746d0c",
+      "config_stack": ["covdiffusion", "cuboids"],
+      "batch_size": 512,
+      "train_sequences": 474169,
+      "batches_per_epoch": 927,
+      "selected_checkpoint_epoch_zero_based": 40,
+      "selected_checkpoint_global_step": 38007,
+      "selected_checkpoint_pose_chamfer": 6.612324
+    },
+    "shelves": {
+      "dataset": "shelves-v2",
+      "train_split_sha256": "8d45a9cc2f2de33b60cac35b9555908247f090f76225a6e17b8b1f7fa11b4cc4",
+      "config_stack": ["covdiffusion", "shelves"],
+      "batch_size": 512,
+      "train_sequences": 447439,
+      "batches_per_epoch": 874,
+      "selected_checkpoint_epoch_zero_based": 45,
+      "selected_checkpoint_global_step": 40204,
+      "selected_checkpoint_pose_chamfer": 10.069027
+    },
+    "containers": {
+      "dataset": "containers-v2",
+      "train_split_sha256": "10724435e7b9ae388df7e0a9d40a1544784ffb666d01fa17489ebd91e57e38bb",
+      "config_stack": ["covdiffusion", "containers"],
+      "batch_size": 128,
+      "train_sequences": 36125,
+      "batches_per_epoch": 283,
+      "selected_checkpoint_epoch_zero_based": 500,
+      "selected_checkpoint_global_step": 141783,
+      "selected_checkpoint_pose_chamfer": 347.93262
+    }
+  }
+}

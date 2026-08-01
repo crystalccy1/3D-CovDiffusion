@@ -1,0 +1,9 @@
+---
+# Shared runtime settings. Model parameters live in covdiffusion.yaml and each
+# category file selects only its dataset and batch size.
+
+processed_data_root: null
+evaluation_cache_root: null
+seed: 42
+workers: 0
+overfitting: false

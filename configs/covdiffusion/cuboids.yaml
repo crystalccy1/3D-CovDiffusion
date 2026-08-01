@@ -1,0 +1,4 @@
+---
+# Fixed Cuboids training/evaluation profile.
+dataset: cuboids-v2
+batch_size: 512

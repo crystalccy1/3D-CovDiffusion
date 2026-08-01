@@ -1,0 +1,44 @@
+name: Feature request
+description: Propose a focused improvement to the code, reproducibility workflow, artifacts, or documentation.
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What concrete limitation or reproducibility problem should be addressed?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe the smallest useful change and its intended interface.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or use case
+      description: Give an example command, workflow, category, or result that motivates the request.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Note existing workarounds or related upstream implementations.
+  - type: textarea
+    id: reproducibility
+    attributes:
+      label: Reproducibility impact
+      description: Would this change data, checkpoints, configs, metrics, dependencies, or documented claims?
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues and kept this request focused on one change.
+          required: true

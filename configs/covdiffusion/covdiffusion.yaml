@@ -1,0 +1,38 @@
+---
+# Released 3D-CovDiffusion architecture and optimizer settings.
+action_dim: 24
+horizon: 16
+n_action_steps: 100
+n_obs_steps: 1
+
+# Kept at the archived value; the historical constructor uses an effective
+# 128-dimensional geometry feature, as documented in the training profile.
+encoder_output_dim: 256
+
+diffusion:
+  diffusion_step_embed_dim: 128
+  down_dims: [512, 1024, 2048]
+  kernel_size: 5
+  n_groups: 8
+  condition_type: film
+  use_down_condition: true
+  use_mid_condition: true
+  use_up_condition: true
+  num_inference_steps: 10
+  obs_as_global_cond: true
+
+noise_scheduler:
+  num_train_timesteps: 100
+  beta_start: 0.0001
+  beta_end: 0.02
+  beta_schedule: squaredcos_cap_v2
+  clip_sample: true
+  set_alpha_to_one: true
+  steps_offset: 0
+  prediction_type: sample
+
+epochs: 4800
+lr: 0.0001
+
+model:
+  backbone: dp3

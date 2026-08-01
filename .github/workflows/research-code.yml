@@ -1,0 +1,96 @@
+name: Validate reproduction release
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  reproduction-checks:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+
+      - name: Set up Python
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.10"
+
+      - name: Compile Python sources
+        run: >-
+          python -m compileall -q
+          train.py evaluate.py covdiffusion models utils
+          scripts/validate_train_ready_dataset.py
+          scripts/validate_hf_checkpoint.py
+          scripts/verify_selected_inference.py
+          reproduce.py
+          covdiffusion/evaluation
+
+      - name: Validate reproduction manifests and CLI
+        run: |
+          python -m json.tool configs/inference/seed42_selected_episodes.json > /dev/null
+          python -m json.tool configs/training/seed42_v2.json > /dev/null
+          python reproduce.py --help > /dev/null
+
+      - name: Run lightweight reproducibility tests
+        run: |
+          python -m pip install --disable-pip-version-check numpy==1.26.4
+          python -m unittest -v \
+            tests.test_inference_manifest \
+            tests.test_paper_metrics \
+            tests.test_reproduce_cli \
+            tests.test_trajectory_history
+
+      - name: Check public naming and machine paths
+        run: |
+          legacy_compact="spray""diffusion"
+          legacy_module="spray""_diffusion"
+          machine_home="/""home/"
+          machine_student="/""usr/stud/"
+          machine_macos="/""Users/"
+          machine_alias="Home""Machine"
+          if git grep -n -i \
+            -e "$legacy_compact" \
+            -e "$legacy_module" \
+            -e "$machine_home" \
+            -e "$machine_student" \
+            -e "$machine_macos" \
+            -e "$machine_alias"; then
+            echo "Found a legacy name or machine-specific path in tracked files."
+            exit 1
+          fi
+
+      - name: Check removed legacy sources do not return
+        run: |
+          for path in \
+            metrics_handler_covdiffusion.py \
+            utils/args.py \
+            utils/config.py \
+            utils/disk.py \
+            utils/pointcloud.py \
+            utils/dataset/raw_v2_dataset.py \
+            scripts/inference/download_evaluation_data.sh; do
+            test ! -e "$path"
+          done
+          data_source_name="Mask""Planner"
+          if git grep -n "$data_source_name" -- ':!docs/DATA.md'; then
+            echo "Data-source name may appear only in docs/DATA.md."
+            exit 1
+          fi
+
+      - name: Check release and license metadata
+        run: |
+          test -f LICENSE
+          test -f MODEL_LICENSE.md
+          test -f THIRD_PARTY_NOTICES.md
+          test -f docs/CODE_PROVENANCE.md
+          test -f CITATION.cff
+          if git grep -nE 'uses: [^ ]+@v[0-9]+' -- .github/workflows; then
+            echo "GitHub Actions must be pinned to immutable commit SHAs."
+            exit 1
+          fi

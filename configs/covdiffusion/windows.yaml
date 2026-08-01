@@ -1,0 +1,4 @@
+---
+# Fixed Windows training/evaluation profile.
+dataset: windows-v2
+batch_size: 512
