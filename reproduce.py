@@ -478,6 +478,11 @@ def _download_hf_data(artifact_root: Path, categories: list[str]) -> None:
         revision=DATASET_REVISION,
         allow_patterns=dataset_patterns,
         local_dir=dataset_root,
+        # The release contains thousands of small Zarr chunks.  The Hub
+        # client's default parallelism can exhaust the anonymous request
+        # budget before a clean download finishes.  A single worker is slower
+        # but remains resumable and reliable for first-time users.
+        max_workers=1,
     )
 
 

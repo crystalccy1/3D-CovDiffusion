@@ -38,14 +38,14 @@
       "covdiffusion/policy/dp3.py": "4d2310680bd6bc7521c688461cfbc7088008c50cc532f09c2de8dd305b327882",
       "evaluate.py": "bb6d2adee5c69cf5817a81431245145eac388ade0910e3b279298efd3a045e11",
       "models/__init__.py": "fbfa254718fb0c85712f5c0eea51201b4ad936d6c22ca9b6a9b93e3ff817bcf5",
-      "reproduce.py": "5665c8d3cbbba0172c1b79dc6824b522b0b389c6c802875c81d50b09e7c1e593",
+      "reproduce.py": "ecfc7e4d2bcb272fe4e580dbda86d7c711c50ab5dcd2f28dcb808e8df64de8b3",
       "scripts/verify_selected_inference.py": "91336f09c02f0181465a13e6ca7c4d5732a92950e8d7c37310cd051f6a786820",
       "utils/__init__.py": "d463501e2a88dd7952e7e018ed4d9a6089f903b89a9502a96387d3ce5ba52341",
       "utils/dataset/__init__.py": "e28453c67e22ae8030446e00fbfa41a49477b5c009be8096e5f1c78460b5bbbe",
       "utils/dataset/canonical_evaluation_dataset.py": "077dbb0ae2b27cd4e63641dcb66d50f7e16868f3c696fddbc3a27f599bce1ed5",
       "utils/dataset/covdiffusion_rollout_dataset.py": "69c46fa0f621661cdc310f415a0922f2123a4d1cc4b5235ededba8da58b9d485"
     },
-    "sha256": "a8726097cb704ef7d1426a8c88cabbd90bc8a8a539a924389646ad47fc802dc9"
+    "sha256": "fbd17f81fdf9d3c0cd3729d6d1fd85dee08a6691d57110f8c447a3c09da5419a"
   },
     "validated_environment": {
         "python": "3.10.18",

@@ -454,6 +454,22 @@ class ReproduceCliTest(unittest.TestCase):
                 ["prepare", "windows", "--data-only", "--checkpoint-only"]
             )
 
+    def test_data_download_uses_one_worker_to_avoid_hub_throttling(self):
+        with tempfile.TemporaryDirectory() as temporary_directory, patch(
+            "reproduce._snapshot_download"
+        ) as snapshot_download_factory:
+            reproduce._download_hf_data(
+                Path(temporary_directory), ["windows"]
+            )
+
+        download = snapshot_download_factory.return_value
+        download.assert_called_once()
+        self.assertEqual(download.call_args.kwargs["max_workers"], 1)
+        self.assertIn(
+            "data/windows-v2/**",
+            download.call_args.kwargs["allow_patterns"],
+        )
+
     def test_data_only_prepare_skips_checkpoint_download(self):
         with tempfile.TemporaryDirectory() as temporary_directory:
             args = reproduce.build_parser().parse_args(
