@@ -17,7 +17,7 @@ reproducible changes are easiest to review.
 
 ## Set up
 
-Follow [Getting Started](README.md#getting-started), then verify the environment:
+Follow [Getting Started](README.md#-getting-started), then verify the environment:
 
 ```bash
 python reproduce.py doctor
