@@ -66,6 +66,16 @@ class InferenceManifestTest(unittest.TestCase):
             sample_ids.add(case["sample_id"])
         self.assertEqual(len(sample_ids), len(CATEGORIES))
 
+    def test_metric_tolerances_are_explicit_and_tight(self):
+        self.assertEqual(
+            self.profile["protocol"]["metric_tolerances"],
+            {
+                "pcd": {"abs": 1e-3, "rel": 0.0},
+                "jerk": {"abs": 2e-6, "rel": 0.0},
+                "coverage": {"abs": 1e-4, "rel": 0.0},
+            },
+        )
+
     def test_evaluator_is_locked_by_file_content_not_an_old_git_tag(self):
         evaluation_code = self.profile["evaluation_code"]
         self.assertNotIn("git_tag", evaluation_code)

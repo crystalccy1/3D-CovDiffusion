@@ -142,6 +142,14 @@ still checked.
 These values use the public final-metric implementation for one selected
 visualization, not the paper's full test-set mean.
 
+Artifact, source, configuration, and evaluator hashes must match exactly.
+GPU metrics are compared with explicit absolute tolerances because CUDA driver
+revisions can produce tiny but repeatable floating-point differences: `1e-3`
+for PCD, `2e-6` for translational jerk, and `1e-4` percentage points for
+coverage. These bounds were validated on the documented RTX 4090 / CUDA 11.7
+environment with NVIDIA drivers `580.159.03` and `580.173.02`; the published
+reference values below remain the canonical `580.159.03` results.
+
 | Category | PCD | Translational jerk | Face-count coverage |
 |:--|--:|--:|--:|
 | Windows | 8.0002249 | 0.02754691 | 100.0000% |

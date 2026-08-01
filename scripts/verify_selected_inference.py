@@ -19,6 +19,13 @@ if str(ROOT) not in sys.path:
 from reproduce import DATASET_REPO, DATASET_REVISION, evaluator_fingerprint
 
 
+MAX_METRIC_TOLERANCES = {
+    "pcd": {"abs": 1e-3, "rel": 0.0},
+    "jerk": {"abs": 2e-6, "rel": 0.0},
+    "coverage": {"abs": 1e-4, "rel": 0.0},
+}
+
+
 def sha256_file(path: Path, chunk_size: int = 8 * 1024 * 1024) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -45,6 +52,53 @@ def parse_args() -> argparse.Namespace:
         ),
     )
     return parser.parse_args()
+
+
+def verify_metric_reference(
+    result_path: Path,
+    record: dict,
+    reference: dict,
+    tolerances: dict,
+) -> None:
+    """Check published metrics with explicit cross-driver float tolerances."""
+
+    for key in ("pcd", "jerk", "coverage"):
+        maximum = MAX_METRIC_TOLERANCES[key]
+        tolerance = tolerances.get(key)
+        if not isinstance(tolerance, dict):
+            raise ValueError(f"Inference profile has no {key} metric tolerance")
+        try:
+            absolute = float(tolerance["abs"])
+            relative = float(tolerance.get("rel", 0.0))
+        except (KeyError, TypeError, ValueError) as error:
+            raise ValueError(
+                f"Inference profile has an invalid {key} metric tolerance"
+            ) from error
+        if not math.isfinite(absolute) or not math.isfinite(relative):
+            raise ValueError(f"Inference profile has a non-finite {key} tolerance")
+        if absolute < 0.0 or relative < 0.0:
+            raise ValueError(f"Inference profile has a negative {key} tolerance")
+        if absolute > maximum["abs"] or relative > maximum["rel"]:
+            raise ValueError(
+                f"Inference profile exceeds the verifier-owned {key} "
+                f"tolerance cap"
+            )
+        if key not in reference:
+            raise ValueError(f"Inference profile has no {key} metric reference")
+        actual_value = float(record[key])
+        reference_value = float(reference[key])
+        if not math.isfinite(actual_value) or not math.isfinite(reference_value):
+            raise ValueError(f"{result_path}: non-finite {key} metric")
+        if not math.isclose(
+            actual_value,
+            reference_value,
+            rel_tol=relative,
+            abs_tol=absolute,
+        ):
+            raise ValueError(
+                f"{result_path}: {key}={record[key]!r}, expected "
+                f"{reference[key]!r} within abs={absolute}, rel={relative}"
+            )
 
 
 def main() -> None:
@@ -161,18 +215,10 @@ def main() -> None:
     public_reference = case.get("public_metric_reference")
     if not isinstance(public_reference, dict):
         raise ValueError(f"Inference profile has no public metric reference")
-    tolerances = {"pcd": 1e-4, "jerk": 1e-6, "coverage": 1e-4}
-    for key, tolerance in tolerances.items():
-        if not math.isclose(
-            float(record[key]),
-            float(public_reference[key]),
-            rel_tol=1e-6,
-            abs_tol=tolerance,
-        ):
-            raise ValueError(
-                f"{result_path}: {key}={record[key]!r}, expected "
-                f"{public_reference[key]!r} within tolerance {tolerance}"
-            )
+    tolerances = profile.get("protocol", {}).get("metric_tolerances")
+    if not isinstance(tolerances, dict):
+        raise ValueError("Inference profile has no metric tolerances")
+    verify_metric_reference(result_path, record, public_reference, tolerances)
 
     verified_ply = None
     if not args.skip_ply_hash:
