@@ -8,6 +8,7 @@ diffusion policy for ordered 6-DoF coverage trajectories from 3D point clouds.
 Chenyuan Chen · Haoran Ding · Ran Ding · Tianyu Liu · Zewen He · Anqing Duan<sup>*</sup> · Yoshihiko Nakamura
 
 [![Project Page](https://img.shields.io/badge/Project-Page-1f6feb?style=for-the-badge&logo=githubpages&logoColor=white)](https://crystalccy1.github.io/3D-CovDiffusion/)
+[![arXiv](https://img.shields.io/badge/arXiv-2510.03011-b31b1b?style=for-the-badge&logo=arxiv&logoColor=white)](https://arxiv.org/abs/2510.03011)
 [![Paper](https://img.shields.io/badge/Paper-PDF-b31b1b?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://crystalccy1.github.io/3D-CovDiffusion/3d-covdiffusion-paper.pdf)
 [![Dataset](https://img.shields.io/badge/Dataset-Train--Ready-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/datasets/ChenyuanC/3D-CovDiffusion-Train-Ready)
 [![Models](https://img.shields.io/badge/Models-Pretrained-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)](https://huggingface.co/ChenyuanC/3D-CovDiffusion)
@@ -352,6 +353,10 @@ If you find this work useful, please consider citing:
   author = {Chen, Chenyuan and Ding, Haoran and Ding, Ran and Liu, Tianyu
             and He, Zewen and Duan, Anqing and Nakamura, Yoshihiko},
   year   = {2026},
+  eprint = {2510.03011},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  url    = {https://arxiv.org/abs/2510.03011},
   note   = {Accepted at IROS 2026}
 }
 ```
