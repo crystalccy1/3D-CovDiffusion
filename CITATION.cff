@@ -2,6 +2,13 @@ cff-version: 1.2.0
 message: If you use this software, please cite the 3D-CovDiffusion paper accepted at IROS 2026.
 title: 3D-CovDiffusion
 type: software
+abstract: >-
+  Research software for training and evaluating geometry- and
+  history-conditioned diffusion policies that generate temporally ordered
+  6-DoF coverage-trajectory chunks from raw 3D point clouds. The method targets
+  industrial surface processing, including robotic spray painting, spray
+  coating, and polishing. Model weights are distributed separately under CC BY
+  4.0.
 authors:
   - family-names: Chen
     given-names: Chenyuan
@@ -17,5 +24,39 @@ authors:
     given-names: Anqing
   - family-names: Nakamura
     given-names: Yoshihiko
+version: 1.0.0
+date-released: "2026-08-02"
+keywords:
+  - coverage path planning
+  - diffusion policy
+  - industrial robotics
+  - robotic spray painting
+  - 3D point clouds
+  - 6-DoF trajectory generation
+  - robot learning
+license: MIT
 repository-code: https://github.com/crystalccy1/3D-CovDiffusion
 url: https://crystalccy1.github.io/3D-CovDiffusion/
+preferred-citation:
+  type: conference-paper
+  title: "3D-CovDiffusion: 3D-Aware Diffusion Policy for Coverage Path Planning"
+  authors:
+    - family-names: Chen
+      given-names: Chenyuan
+    - family-names: Ding
+      given-names: Haoran
+    - family-names: Ding
+      given-names: Ran
+    - family-names: Liu
+      given-names: Tianyu
+    - family-names: He
+      given-names: Zewen
+    - family-names: Duan
+      given-names: Anqing
+    - family-names: Nakamura
+      given-names: Yoshihiko
+  conference:
+    name: 2026 IEEE/RSJ International Conference on Intelligent Robots and Systems
+  year: 2026
+  url: https://arxiv.org/abs/2510.03011
+  repository-code: https://github.com/crystalccy1/3D-CovDiffusion

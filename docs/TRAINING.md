@@ -168,6 +168,30 @@ reproduce the released model path.
 
 ## 4. Validation and claim boundary
 
+### Paper-reported protocol vs released-checkpoint protocol
+
+The manuscript and the current public artifacts describe two distinct protocol
+records. Keep them separate when reproducing the code or citing model details:
+
+| Item | Paper / arXiv v2 | Current public release |
+|:--|:--|:--|
+| Model scope | Reports one jointly trained model across benchmark categories | Provides four separately trained category checkpoints |
+| Point-cloud feature | 64-D | Effective 128-D |
+| History feature | `24 → 128 → 64` | `24 → 128 → 128` |
+| Global condition | 128-D | 256-D |
+| Prediction target | Added noise (`epsilon`) | Clean trajectory sample (`x0`) |
+| Epoch schedule | 200 epochs | Configured for 4,800 epochs |
+| Batch size | 128 | 512 for Windows/Cuboids/Shelves; 128 for Containers |
+| Diffusion schedule | 100 DDIM inference steps | 100 training timesteps; 10 DDIM inference steps |
+| Public artifact | Paper description and aggregate results | Category configs, per-category run metadata, and four checkpoint hashes |
+
+The historical source supported a multi-dataset training option, but the public
+release does not include the joint checkpoint, its resolved configuration, or a
+manifest tying one checkpoint hash to every category result. Therefore the
+paper's joint-model claim is reported here as a paper claim, not as a capability
+verified by the current public artifacts. The release-owned, machine-readable
+configuration remains authoritative for the downloadable checkpoints.
+
 The release audit on a validated RTX 4090 machine completed:
 
 - one forward/backward/Adam/EMA step for all four categories;

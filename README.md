@@ -17,6 +17,7 @@ Chenyuan Chen · Haoran Ding · Ran Ding · Tianyu Liu · Zewen He · Anqing Dua
 
 ## Table of Contents
 
+- [Research Summary](#research-summary)
 - [To-Do List](#to-do-list)
 - [Getting Started](#-getting-started)
   - [Reproduction entry point](#reproduction-entry-point)
@@ -31,6 +32,29 @@ Chenyuan Chen · Haoran Ding · Ran Ding · Tianyu Liu · Zewen He · Anqing Dua
 - [Fixed Protocol](#fixed-protocol)
 - [Citation](#citation)
 - [Acknowledgements and License](#acknowledgements-and-license)
+
+## Research Summary
+
+**3D-CovDiffusion** addresses learning-based coverage path planning for
+industrial surface-processing robots, including robotic spray painting, spray
+coating, and polishing. It conditions iterative trajectory denoising on a raw
+3D point cloud and recent motion history to generate temporally ordered 6-DoF
+end-effector trajectory chunks, which are concatenated sequentially into a
+coverage path. Unlike point-wise or segment-wise predictors, the formulation
+models execution order directly instead of relying on a separate heuristic
+sorting or stitching stage.
+
+The paper reports a jointly trained, category-agnostic model across its
+benchmark geometries. The current public `v1.0.0` release provides separately
+trained checkpoints for Windows, Cuboids, Shelves, and Containers and follows
+the checkpoint-producing saved configuration. See the explicit
+[paper-versus-release protocol boundary](docs/TRAINING.md#4-validation-and-claim-boundary)
+before comparing hyperparameters or reproducing paper claims.
+
+**Method I/O:** a 5,120-point XYZ cloud plus the previous 24-D motion-history
+token (four ordered 6-DoF poses) produces ordered future trajectory chunks. The
+released policies are research planners, not collision checkers, inverse
+kinematics solvers, or certified robot-safety controllers.
 
 ## To-Do List
 

@@ -1,0 +1,52 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "name": "3D-CovDiffusion",
+  "alternateName": [
+    "3D CovDiffusion",
+    "CovDiffusion"
+  ],
+  "description": "Research software for training and evaluating a geometry- and history-conditioned diffusion policy that generates temporally ordered 6-DoF coverage-trajectory chunks from raw 3D point clouds for industrial surface processing.",
+  "softwareVersion": "1.0.0",
+  "datePublished": "2026-08-02",
+  "codeRepository": "https://github.com/crystalccy1/3D-CovDiffusion",
+  "issueTracker": "https://github.com/crystalccy1/3D-CovDiffusion/issues",
+  "url": "https://crystalccy1.github.io/3D-CovDiffusion/",
+  "downloadUrl": "https://github.com/crystalccy1/3D-CovDiffusion/releases/tag/v1.0.0",
+  "license": "https://spdx.org/licenses/MIT.html",
+  "programmingLanguage": "Python",
+  "runtimePlatform": [
+    "Linux x86_64",
+    "Python 3.10.18",
+    "PyTorch 1.13.1",
+    "CUDA 11.7"
+  ],
+  "applicationCategory": "Robotics research software",
+  "keywords": [
+    "coverage path planning",
+    "diffusion policy",
+    "industrial robotics",
+    "robotic spray painting",
+    "spray coating",
+    "robotic polishing",
+    "3D point clouds",
+    "6-DoF trajectory generation",
+    "sequence-level trajectory generation",
+    "robot learning"
+  ],
+  "author": [
+    { "@type": "Person", "givenName": "Chenyuan", "familyName": "Chen" },
+    { "@type": "Person", "givenName": "Haoran", "familyName": "Ding" },
+    { "@type": "Person", "givenName": "Ran", "familyName": "Ding" },
+    { "@type": "Person", "givenName": "Tianyu", "familyName": "Liu" },
+    { "@type": "Person", "givenName": "Zewen", "familyName": "He" },
+    { "@type": "Person", "givenName": "Anqing", "familyName": "Duan" },
+    { "@type": "Person", "givenName": "Yoshihiko", "familyName": "Nakamura" }
+  ],
+  "citation": {
+    "@type": "ScholarlyArticle",
+    "name": "3D-CovDiffusion: 3D-Aware Diffusion Policy for Coverage Path Planning",
+    "identifier": "arXiv:2510.03011",
+    "url": "https://arxiv.org/abs/2510.03011"
+  }
+}
